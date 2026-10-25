@@ -20,11 +20,11 @@ class LoginService
         }
 
         // 2. Role Verification (Agar request me targeted role bheja gaya ho)
-        if (isset($credentials['role']) && $user->role !== $credentials['role']) {
-            throw ValidationException::withMessages([
-                'role' => ["You do not have access rights as a {$credentials['role']}"],
-            ]);
-        }
+        // if (isset($credentials['role']) && $user->role !== $credentials['role']) {
+        //     throw ValidationException::withMessages([
+        //         'role' => ["You do not have access rights as a {$credentials['role']}"],
+        //     ]);
+        // }
 
 
         $token = $user->createToken('auth_token', [$user->role])->plainTextToken;
