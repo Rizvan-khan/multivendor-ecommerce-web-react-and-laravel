@@ -1,5 +1,9 @@
 import React, { useState } from "react";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, useLocation , useNavigate} from "react-router-dom";
+import { api, getApiError } from '../../../api/https';
+
+    import axios from 'axios';
+
 
 const Sidenav = ({ open, onClose }) => {
   const location = useLocation();
@@ -22,6 +26,26 @@ const Sidenav = ({ open, onClose }) => {
         ? "bg-white text-gray-950"
         : "text-gray-300 hover:bg-gray-800 hover:text-white"
     }`;
+
+
+const navigate = useNavigate();
+
+const handleLogout = async () => {
+  try {
+    const token = localStorage.getItem('access_token');
+
+    await api.post('/logout', {}, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+  } catch (error) {
+    console.error('Logout failed', error);
+  } finally {
+    localStorage.removeItem('access_token');
+    navigate('/login');
+  }
+};
 
   return (
     <>
@@ -86,6 +110,19 @@ const Sidenav = ({ open, onClose }) => {
           {/* =====================
               PRODUCTS
           ====================== */}
+
+          <div className="mt-2">
+
+            <NavLink
+              to="/vendor/profile"
+              onClick={onClose}
+              className={navLinkClass}
+            >
+              <span className="w-5">⚙️</span>
+              <span>Profile Management</span>
+            </NavLink>
+
+          </div>
 
           <div className="mt-2">
 
@@ -275,18 +312,16 @@ const Sidenav = ({ open, onClose }) => {
         </nav>
 
 
-        {/* Logout */}
-        <div className="absolute bottom-0 left-0 right-0 p-4 bg-gray-950 border-t border-gray-800">
-
-          <button
-            type="button"
-            className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-sm text-gray-300 hover:bg-red-500/10 hover:text-red-400 transition"
-          >
-            <span>🚪</span>
-            <span>Logout</span>
-          </button>
-
-        </div>
+     <div className="absolute bottom-0 left-0 right-0 p-4 bg-gray-950 border-t border-gray-800">
+      <button
+        type="button"
+        onClick={handleLogout}
+        className="w-full flex items-center gap-3 px-4 py-3 rounded-lg text-sm text-gray-300 hover:bg-red-500/10 hover:text-red-400 transition"
+      >
+        <span>🚪</span>
+        <span>Logout</span>
+      </button>
+    </div>
 
       </aside>
     </>

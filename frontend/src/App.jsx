@@ -1,5 +1,4 @@
 import React from "react";
-
 import {
   BrowserRouter,
   Routes,
@@ -8,35 +7,40 @@ import {
 } from "react-router-dom";
 
 import MainLayout from "./components/Vendor/layout/MainLayout";
+import ProtectedRoute from "./components/ProtectedRoute"; // <-- Import protected route
 
 // Dashboard
 import Dashboard from "./pages/vendor/Dashboard";
 
 // Settings
 import Settings from "./pages/vendor/Settings";
+import Login from './pages/Login';
+import VendorProfile from './pages/vendor/VendorProfile';
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
 
+        {/* Public Route */}
+        <Route path="/login" element={<Login />} />
+
         {/* =========================
-            VENDOR PANEL
+            VENDOR PANEL (PROTECTED)
         ========================== */}
+        <Route element={<ProtectedRoute />}>
+          <Route path="/vendor" element={<MainLayout />}>
 
-        <Route path="/vendor" element={<MainLayout />}>
+            {/* Dashboard */}
+            <Route index element={<Dashboard />} />
 
-          {/* Dashboard */}
-          <Route
-            index
-            element={<Dashboard />}
-          />
+            {/* Profile */}
+            <Route path="profile" element={<VendorProfile />} />
 
-          <Route
-            path="settings"
-            element={<Settings />}
-          />
+            {/* Settings */}
+            <Route path="settings" element={<Settings />} />
 
+          </Route>
         </Route>
 
 
