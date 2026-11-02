@@ -55,4 +55,19 @@ class AuthController extends Controller
             'user' => $user,
         ]);
     }
+
+
+public function logout(Request $request): JsonResponse
+{
+    try {
+        // Revoke the token that was used to authenticate the current request
+        $request->user()->currentAccessToken()->delete();
+
+        return $this->successResponse(null, 'Logged out successfully.');
+    } catch (\Exception $e) {
+        return $this->errorResponse('Failed to logout. Please try again.', 500);
+    }
+}
+
+
 }

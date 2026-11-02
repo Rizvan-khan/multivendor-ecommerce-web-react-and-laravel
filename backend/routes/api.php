@@ -3,9 +3,8 @@
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\Vendor\StoreProfileController;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-
-
 
 Route::post('/login', [AuthController::class, 'login']);
 
@@ -25,7 +24,12 @@ Route::middleware('auth:sanctum')->prefix('vendor')->group(function () {
 
 });
 
-// // Only for Users
-// Route::middleware(['auth:sanctum', 'ability:user'])->group(function () {
-//     Route::post('/user/orders', [OrderController::class, 'store']);
-// });
+// // Only for admin
+Route::middleware('auth:sanctum')->prefix('admin')->group(function () {
+   
+
+});
+
+Route::middleware('auth:sanctum')->group(function () {
+    Route::post('/logout', [AuthController::class, 'logout']);
+});
