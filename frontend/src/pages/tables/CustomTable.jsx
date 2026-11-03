@@ -25,7 +25,7 @@ export default function CustomTable({ columns, data }) {
           ) : (
             <tr>
               <td colSpan={columns.length} className="p-6 text-center text-gray-500">
-                Koi data nahi mila bhai! 📭
+                {/* Koi data nahi mila bhai! 📭 */}
               </td>
             </tr>
           )}

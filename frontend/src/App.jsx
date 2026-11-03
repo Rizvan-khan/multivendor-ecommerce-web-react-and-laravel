@@ -16,6 +16,7 @@ import Dashboard from "./pages/vendor/Dashboard";
 import Settings from "./pages/vendor/Settings";
 import Login from './pages/Login';
 import VendorProfile from './pages/vendor/VendorProfile';
+import AddProduct from './pages/vendor/product/AddProduct';
 
 function App() {
   return (
@@ -33,6 +34,8 @@ function App() {
 
             {/* Dashboard */}
             <Route index element={<Dashboard />} />
+
+            <Route path="products/add" element={<AddProduct />} />
 
             {/* Profile */}
             <Route path="profile" element={<VendorProfile />} />

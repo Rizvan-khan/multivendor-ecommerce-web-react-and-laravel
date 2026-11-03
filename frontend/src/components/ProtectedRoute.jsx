@@ -3,7 +3,9 @@ import { Navigate, Outlet } from 'react-router-dom';
 
 const ProtectedRoute = () => {
   // Check karein ki user authenticated hai ya nahi (token check kar rahe hain)
-  const token = localStorage.getItem('access_token');
+  const token = localStorage.getItem('token');
+
+  console.log(token);
 
   // Agar token nahi hai, toh login page par bhej do
   if (!token) {
