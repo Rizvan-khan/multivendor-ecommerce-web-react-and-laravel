@@ -17,6 +17,7 @@ import Settings from "./pages/vendor/Settings";
 import Login from './pages/Login';
 import VendorProfile from './pages/vendor/VendorProfile';
 import AddProduct from './pages/vendor/product/AddProduct';
+import MainPage from './components/admin/MainPage';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
 
         {/* Public Route */}
         <Route path="/login" element={<Login />} />
+        <Route path="/admin" element={<MainPage />} />
 
         {/* =========================
             VENDOR PANEL (PROTECTED)
