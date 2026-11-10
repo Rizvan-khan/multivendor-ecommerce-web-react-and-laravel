@@ -66,7 +66,7 @@ const AdminSidebar = ({ open, collapsed, onClose }) => {
         {/* Footer */}
         <div className="flex items-center gap-3 border-t border-white/10 px-[26px] py-4 text-xs">
           <span className="h-2 w-2 flex-none rounded-full bg-green-400" />
-          <span className={label}>Sab systems chal rahe hain</span>
+          <span className={label}>System Live</span>
         </div>
       </aside>
     </>

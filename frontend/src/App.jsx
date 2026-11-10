@@ -18,6 +18,9 @@ import Login from './pages/Login';
 import VendorProfile from './pages/vendor/VendorProfile';
 import AddProduct from './pages/vendor/product/AddProduct';
 import MainPage from './components/admin/MainPage';
+import AdminDashboard from './pages/admin/Dashboard';
+import User from './pages/admin/usermanage/User';
+import Category from './pages/admin/category/Category';
 
 function App() {
   return (
@@ -26,7 +29,15 @@ function App() {
 
         {/* Public Route */}
         <Route path="/login" element={<Login />} />
-        <Route path="/admin" element={<MainPage />} />
+        <Route element={<ProtectedRoute />}>
+          <Route path="/admin" element={<MainPage />}>
+            <Route index element={<AdminDashboard />} />
+            <Route path="dashboard" element={<AdminDashboard />} />
+            <Route path="user-management" element={<User />} />
+            <Route path="categories" element={<Category />} />
+
+          </Route>
+        </Route>
 
         {/* =========================
             VENDOR PANEL (PROTECTED)
