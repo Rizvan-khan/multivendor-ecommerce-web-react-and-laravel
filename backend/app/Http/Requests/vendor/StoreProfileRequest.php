@@ -1,8 +1,7 @@
 <?php
 
-namespace App\Http\Requests\Vendor;
+namespace App\Http\Requests\vendor;
 
-namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -16,7 +15,7 @@ class StoreProfileRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'store_name' => 'required|string|max:255',
+            'shop_name' => 'required|string|max:255',
             'logo' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:2048', // 2MB max
             'banner' => 'nullable|image|mimes:jpeg,png,jpg,webp|max:4096', // 4MB max
             'description' => 'nullable|string|max:1000',

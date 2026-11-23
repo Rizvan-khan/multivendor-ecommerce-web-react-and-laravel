@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Vendor;
 
 use App\Http\Controllers\Controller;
-
 use App\Http\Requests\vendor\StoreProfileRequest;
 use App\Http\Resources\vendor\StoreProfileResource;
 use App\Services\StoreProfileService;

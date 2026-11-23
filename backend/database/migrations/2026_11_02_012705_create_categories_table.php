@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreignId('parent_id')->nullable()->constrained('categories')->onDelete('cascade');
             $table->decimal('commission_rate', 5, 2)->default(0.00); // e.g., 5.00%
             $table->decimal('tax_rate', 5, 2)->default(0.00);       // e.g., 18.00%
-            $table->timestamps();
+            $table->timestamps(); 
         });
     }
 
